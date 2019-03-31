@@ -1,0 +1,96 @@
+html {
+  overflow: hidden;
+  height: 100%;
+}
+
+body {
+  font-family: 'Aldrich';
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  height: 100%;
+}
+
+div {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  background: linear-gradient(to bottom, #5c6363 0%, #383a3a 50%, #0a0e0a 51%, #0a0809 100%);
+  color: white;
+  margin: 0px;
+  padding: 5px 5px 5px 10px;
+}
+
+h2 {
+  font-size: 19px;
+  font-style: italic;
+  margin: 0px;
+  padding: 5px 30px;
+}
+h3 {
+  font-size: 12px;
+  font-weight: bold;
+  margin: 0px;
+  padding: 5px 30px;
+}
+
+ul{
+  font-size: 12px;
+}
+button {
+  padding: 10;
+}
+
+#switch-viewer {
+  position: absolute;
+}
+
+#switch-viewer {
+  margin: 0 auto;
+  width: 100%;
+  text-align: center;
+  bottom: 10px;
+  z-index: 100;
+}
+
+#camera-controls {
+  float: left;
+}
+
+#tips {
+  position: relative;
+  left: 0;
+  top: 0px;
+  width: 100%;
+}
+
+#floorplanner, #viewer {
+  position: absolute;
+  width: 100vw;
+}
+
+#floorplanner-controls {
+  position: relative;
+  top: 10px;
+  left: 0;
+  padding: 0 30px;
+  width: 100%;
+}
+
+#main-controls {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding: 0;
+}
+
+.inventory-content {
+  max-height: 500px;
+  overflow-y: scroll;
+}
+
+.dg select {
+  color: black;
+}

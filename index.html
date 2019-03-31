@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Kitchen Kreation</title>
+	<link href="https://fonts.googleapis.com/css?family=Aldrich" rel="stylesheet">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link href="css/app.css" rel="stylesheet">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.3/dat.gui.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	<script src="js/kitchenKreation.js"></script>
+	<script src="js/items.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/html2canvas.js"></script>
+	<script src="js/three.js"></script>
+
+</head>
+
+<body>
+	<h1> Kitchen Kreation </h1>
+	<div id="tips">
+		<h2>Tips</h2>
+		<h3> For 2D Floorplan: </h3>
+		<ul style="list-style-type:square;">
+			<li>To Draw walls, select the <span class="glyphicon glyphicon-pencil"></span> button and click to at starting of point to draw and reclick at the endpoint. Press ESC to stop drawing walls.</li>
+			<li>To Delete walls, select the <span class="glyphicon glyphicon-trash"></span> button and simply click on the wall, once highlighted in red</li>
+			<li>To Move walls, select the <span class="glyphicon glyphicon-move"></span> button and click and drag from a specific wall to extend it</li>
+		</ul>
+		<h3> For 3D Render: </h3>
+		<ul style="list-style-type:square;">
+			<li>To change wall/floor texture, click on the wall and floor that you would like to change and pick a texture from the dropdown box in the sub-menu</li>
+			<li>Use mouse, scroll wheel and arrow keys to operate the camera. To reset the camera click the '3D Render' button below</li>
+			<li>To add items, click the <span class="glyphicon glyphicon-plus"></span> button and select an item from the catalogue</li>
+		</ul>
+		<h3> To Reset your floorplan, select the "New Layout" button </h3>
+		<div id='2D-Floorplan' class='card'>
+			<div id="floorplanner" class='front'>
+				<div id="floorplanner-controls">
+					<a href="#" class="btn btn-default btn-lg glyphicon glyphicon-asterisk" id="new2d" title="New Layout"></a>
+					<button id="move" class="btn btn-lg btn-default" title="Move Walls">
+						<span class="glyphicon glyphicon-move"></span>
+					</button>
+					<button id="draw" class="btn btn-lg btn-default" title="Draw New Walls">
+						<span class="glyphicon glyphicon-pencil"></span>
+					</button>
+					<button id="delete" class="btn btn-lg btn-default" title="Delete Walls">
+						<span class="glyphicon glyphicon-trash"></span>
+					</button>
+					<button id="screenshot-2D" class="btn btn-lg btn-default" title="Screenshot">
+						<span class="glyphicon glyphicon-camera	"></span>
+					</button>
+				</div>
+				<canvas id="floorplanner-canvas"></canvas>
+			</div>
+
+			<div id="3D-Floorplan" class='back'>
+				<div id="main-controls">
+					<a href="#" class="btn btn-default btn-lg	glyphicon glyphicon-asterisk" id="new3d" title="New Layout"></a>
+					<button id="screenshot-3D" class="btn btn-lg btn-default" title="Screenshot">
+						<span class="glyphicon glyphicon-camera	"></span>
+					</button>
+				</div>
+			</div>
+		</div>
+		<div id='switch-viewer'>
+			<button id="showFloorPlan" class="btn btn-lg btn-default active" title="Edit 2D floorplan">
+				<span class="glyphicon glyphicon-move"></span> 2D Floorplan
+			</button>
+			<button id="showDesign" class="btn btn-lg btn-default" title="Edit 3D floorplan">
+				<span class="glyphicon glyphicon-move"></span> 3D Render
+			</button>
+			<button id="showAddItems" class="btn btn-lg btn-default" data-toggle="modal" data-target="#add-items-modal" title="Add Items">
+				<span class="glyphicon glyphicon-plus"></span>
+			</button>
+		</div>
+
+		<!-- Add Items -->
+		<div class="modal fade" id="add-items-modal" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Insert Items</h4>
+					</div>
+					<div class="modal-body">
+						<div id="add-items" class="panel-group">
+							<div id="floor-items" class="panel panel-default">
+								<div id="floor-items-header" class="panel-heading">
+									<h4 class="panel-title"><a data-toggle="collapse" data-parent="#add-items" href="#floor-items-body">Floor Items</a></h4>
+								</div>
+								<div id="floor-items-body" class="panel-collapse collapse in inventory-content">
+									<div class="row panel-body" id="floor-items-wrapper">
+										<!-- Items added here by items.js -->
+									</div>
+								</div>
+							</div>
+							<div id="wall-items" class="panel panel-default">
+								<div id="wall-items-header" class="panel-heading">
+									<h4 class="panel-title"><a data-toggle="collapse" data-parent="#add-items" href="#wall-items-body">Wall Items</a></h4>
+								</div>
+								<div id="wall-items-body" class="panel-collapse collapse inventory-content">
+									<div class="row panel-body" id="wall-items-wrapper">
+										<!-- Items added here by items.js -->
+									</div>
+								</div>
+							</div>
+							<div id="in-wall-items" class="panel panel-default">
+								<div id="in-wall-items-header" class="panel-heading">
+									<h4 class="panel-title"><a data-toggle="collapse" data-parent="#add-items" href="#in-wall-items-body">In Wall Items</a></h4>
+								</div>
+								<div id="in-wall-items-body" class="panel-collapse collapse inventory-content">
+									<div class="row panel-body" id="in-wall-items-wrapper">
+										<!-- Items added here by items.js -->
+									</div>
+								</div>
+							</div>
+
+
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+</body>
+
+</html>
