@@ -1,19 +1,5 @@
 ﻿# KitchenKreation
 
-To run and develop locally a HTTP server needs to be intialised;
-Either npm or Python are valid options
-
-npm install http-server -g (must in install node first)
-http-server . -p 8000
-
-```python -m http.server```
-
-//References
-
-Threejs.org. (2019). three.js - Javascript 3D library. [online] Available at: https://threejs.org/
-
-GitHub. (2019). aalavandhaann/blueprint-js. [online] Available at: https://github.com/aalavandhaann/# KitchenKreation - 2D/3D Kitchen Planner
-
 #### To run and develop locally a HTTP server needs to be intialised;
 
 Either npm or Python are valid options
@@ -25,7 +11,7 @@ Either npm or Python are valid options
 
 ###### python
 
-python -m http.server
+`python -m http.server`
 
 ### References
 
