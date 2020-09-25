@@ -6,7 +6,7 @@ Either npm or Python are valid options
 npm install http-server -g (must in install node first)
 http-server . -p 8000
 
-python -m http.server
+```python -m http.server```
 
 //References
 
