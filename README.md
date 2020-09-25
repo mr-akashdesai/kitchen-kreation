@@ -1,4 +1,4 @@
-﻿# KitchenKreation
+﻿# KitchenKreation - 2D/3D Javascript Kitchen Planner
 
 #### To run and develop locally a HTTP server needs to be intialised;
 
