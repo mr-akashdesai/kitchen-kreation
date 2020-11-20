@@ -1,6 +1,6 @@
 ﻿# KitchenKreation - 2D/3D Javascript Kitchen Planner
 
-#### To run and develop locally a HTTP server needs to be intialised (make sure hardware accelleration is enabled on your browswer);
+#### To run and develop locally a HTTP server needs to be intialised (make sure hardware acceleration is enabled on your browswer);
 
 Either npm or Python are valid options
 
